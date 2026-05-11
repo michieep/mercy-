@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercy Streams</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html{
+      scroll-behavior: smooth;
+    }
+              
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background:linear-gradient(180deg,rgb(150, 188, 192),rgb(40, 107, 114));
+      color: white;
+  
+    }
+
+    /* Header with video background */
+    header {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    header video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+    
+      z-index: 0;
+    }
+
+    header h1 {
+      position: relative;
+      font-size: 3rem;
+      z-index: 1;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-shadow: 0 0 15px rgba(57, 108, 162, 0.8);
+    
+      animation: fadeIn 6s ease-in-out ;
+      animation-iteration-count: infinite;
+    }
+
+    .psalm-banner {
+  text-align: center;
+  font-size: 2rem;
+  color: rgb(62, 128, 87);
+  font-family: Georgia, serif;
+  background: transparent; /* subtle highlight */
+  padding: 12px 20px;
+  margin: 20px auto;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  text-shadow: 0 0 15px rgb(46, 200, 151);
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .psalm-banner {
+    font-size: 1.5rem;
+    padding: 10px 12px;
+  }
+}
+
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      background:rgb(6, 81, 81);
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 8px; 
+      background: linear-gradient(135deg,rgb(150, 188, 192));
+      
+      
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background:rgb(101, 139, 173);
+      transform: scale(1.08);
+    }
+
+    div h2{
+      position: relative;
+      animation: fadeIn 7s ease-in-out;
+      animation-iteration-count: infinite;
+
+      font-size: 45px;
+      color: palevioletred;
+      text-shadow: 0 0 15px rgb(181, 136, 51);
+      
+      text-align: center;
+    }
+       
+    section {
+      padding: 50px 20px;
+      text-align: center;
+      
+    }
+
+    section img {
+      max-width: 90%;
+      border: 4px solid white;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+      transition: 0.3s;
+    }
+
+    section img:hover {
+      transform: scale(1.09);
+    }
+    #mood{
+      background-color: #8e6d9f;
+      gap: 10px;
+      margin-bottom: 25px;
+      border-radius: 20px;
+      color: beige;
+      text-shadow: 0 0 15px rgb(233, 90, 39);
+    
+
+    }
+
+    section h2 {
+      margin-top: 20px;
+      font-size: 2.5rem;
+      text-shadow: 0 0 15px rgb(106, 179, 179);
+      
+    }
+      section div a{
+      text-decoration: none;
+     
+    }
+
+    /* Mood Cards */
+    .mood-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+      }
+
+    .mood-card {
+      background: linear-gradient(135deg,rgb(9, 113, 126),rgb(110, 163, 169)); color:white;
+      padding: 20px;
+      border: 2px solid rgb(164, 70, 102);
+      border-radius: 12px;
+      cursor: pointer;
+      width: 150px;
+      transition: 0.3s;
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      color: white;
+      }
+    
+
+    .mood-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(255,255,255,0.5);
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      header {
+        height: 200px;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      nav {
+        flex-direction: column;
+      }
+      .psalm-heading {
+    font-size: 1.1rem;}
+      }
+    
+      #help {
+    background: linear-gradient(135deg, #2b1055, #7597de);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 20px;
+  }
+
+  .help-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  .help-container p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .help-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .help-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .help-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+  }
+
+  .help-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+
+  .help-card a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .help-card a:hover {
+    text-decoration: underline;
+  }
+  .bout{
+     background: linear-gradient(135deg, #5a0c4a, #6c80ad);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 20px;
+    margin-top: 30px;
+
+  }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center; font-style: italic; font-size: 20px;"> Free Shipping all over India </h2>
+  
+  <header id="#home">
+    <video src="img/9695b4c1784f2a3743d7ab4ae649a354 (2).mp4" autoplay muted loop></video>
+    <h1>🌟 MERCY STREAMS 🌟</h1><br>
+    
+
+  </header>
+
+  <nav>
+    <a href="#home">HOME</a>
+    <a href="#books">BOOKS</a>
+    <a href="#mood">MOOD</a>
+    <a href="temp.html">MUSIC</a>
+  
+    <a href="#help">HELP CENTER</a>
+    <a href="#about">ABOUT US</a>
+  </nav>
+  
+
+  <h2 class="psalm-banner">
+  “Commit your way to the Lord; trust in Him, and He will act.” — Psalm 37:5
+</h2>
+  <section id="books">
+    <img src="img/Baixar fechar acima do uma piedosos Bíblia e cristão Cruz em de madeira mesa_ feliz Boa Sexta-feira ou religião conceito de ai gerado gratuitamente.jpeg" alt="Bible Image">
+    <h2>Encouraging Bible Verses</h2>
+    
+  </section>
+   
+
+    <div>
+
+      <h2>"JESUS LOVES YOU."</h2>
+    </div>
+
+
+  <section id="mood">
+    <h2>"What's your heart saying today? Let GOD answer through HIS Words."</h2>
+    <div class="mood-container">
+    
+        <a href="joyful.html" class="mood-card">
+        😊 Joyful
+      </a>
+      <a href="thankful.html" class="mood-card">
+      🙏 Thankful
+      </a>
+      <a href="hopeful.html"  class="mood-card">
+      🌟 Hopeful
+      </a>
+        <a href="excited.html" class="mood-card">
+      🔥 Excited
+      </a>
+      <a href="peace.html" class="mood-card">☮ Peaceful</a>
+      <a href="sad.html" class="mood-card">🥺 Sad </a>
+      <a href="worried.html" class="mood-card">😟 Worried / Anxious </a>
+      <a href="discouraged.html" class="mood-card">😞 Discouraged</a>
+      <a href="seeking.html" class="mood-card">🧭 Seeking Guidance </a>
+      <a href="needing.html" class="mood-card">💪 Needing Strength </a>
+      <a href="forgive.html" class="mood-card">✝️ Wanting Forgiveness </a>
+      <a href="grateful.html" class="mood-card">🌸 Grateful </a>
+      <a href="stressed.html" class="mood-card">😫 Stressed </a>
+      <a href="confused.html" class="mood-card">🤔 Confused </a>
+      <a href="tired.html" class="mood-card">😴 Tired </a>
+      
+    </div>
+  </section>
+     <section id="help">
+  <div class="help-container">
+    <h2>Help Center</h2>
+    <p>We’re here to guide you. Choose a topic below or contact us directly.</p>
+
+    <div class="help-grid">
+      <div class="help-card">
+        <h3>📖 Bible Access</h3>
+        <p>Learn how to read, download, or search Bible verses easily.</p>
+        <a href="#bible-guide">Read More →</a>
+      </div>
+
+      <div class="help-card">
+        <h3> Praising & Worshipping </h3>
+        <p>We can only help you here, but Christ can help you anywhere.</p>
+        <a href="temp.html">Let's Surrender →</a>
+      </div>
+
+      <div class="help-card">
+        <h3>🙏 Mood Verses</h3>
+        <p>Not sure what verse you need? Let us guide you with mood-based verses.</p>
+        <a href="#mood">Explore →</a>
+      </div>
+
+      <div class="help-card">
+        <h3>📩 Contact Support</h3>
+        <p>Still stuck? Reach out directly, and we’ll be glad to help.</p>
+        <a href="contact.html">Email Us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+    
+    <div id="about" class="bout">
+      <h2>✨ ABOUT US</h2>
+      <p>Welcome to Mercy Streams – a place where God’s Word flows into every heart.
+We believe the Bible speaks differently to each of us, depending on what we’re going through. That’s why we’ve built a space where you can:</p>
+     <p>📖 Read the Bible in both English and Hind</p>
+     <p>💭 Share your mood and discover verses that match your heart</p>
+     <p>🛍️ Explore Christian items through our “Buy Now” option, directing you safely to trusted platforms like Amazon</p>
+     <p>Our mission is simple: to bring peace, hope, and encouragement through God’s Word in your daily life. Whether you’re joyful, weary, searching, or thankful – there’s always a verse waiting for you here.</p>
+     <p>At <b>Mercy Streams</b>, we don’t just give you words; we help you find God’s promises that speak to your season. 🌿</p>
+
+    </div>
+
+  <footer>
+    © 2025 Mercy Streams | Designed with ❤️ for Christ
+  </footer>
+
+  <script>
+    // Typing animation for header
+    const text = "MERCY STREAMS";
+    let i = 0;
+    function typing() {
+      if (i < text.length) {
+        document.getElementById("title").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, 150);
+      }
+    }
+    typing();
+
+    // Mood card click event
+    const moods = document.querySelectorAll(".mood-card");
+    moods.forEach(card => {
+      card.addEventListener("click", () => {
+        alert("Selected Mood: " + card.innerHTML + " ✨\nBible verse feature coming soon!");
+      });
+    });
+  </script>
+</body>
+</html>

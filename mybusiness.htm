@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soft Pixel Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #f7f3ff, #eef6ff);
+      color: #3b2f4a;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      max-width: 500px;
+      margin: auto;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .cta {
+      margin-top: 1.5rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 0.7rem 1.6rem;
+      border-radius: 25px;
+      background: #c9b6ff;
+      color: #2e2141;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: #b19cff;
+    }
+
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #ffffffc9;
+      padding: 1.8rem;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .about {
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .about p {
+      margin-top: 1rem;
+      opacity: 0.95;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Soft Pixel Studio</h1>
+    <p>Gentle, faith-aligned digital designs made with intention, creativity, and heart.</p>
+    <div class="cta">
+      <a href="#contact">Work With Me</a>
+    </div>
+  </header>
+
+  <section>
+    <h2 style="font-family: Playfair Display; text-align:center; margin-bottom:1.5rem;">What I Create</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Canva Designs</h3>
+        <p>Posts, stories, thumbnails, and social media creatives that feel soft yet professional.</p>
+      </div>
+      <div class="card">
+        <h3>Digital Invitations</h3>
+        <p>Beautiful invites for events, birthdays, church programs, and special moments.</p>
+      </div>
+      <div class="card">
+        <h3>Christian Designs</h3>
+        <p>Bible verses, retreat posters, faith-based visuals crafted with reverence.</p>
+      </div>
+      <div class="card">
+        <h3>Simple Websites</h3>
+        <p>Clean landing pages and mini-sites that connect purpose with clarity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2 style="font-family: Playfair Display;">About This Studio</h2>
+    <p>I believe creativity is a gift meant to serve. Every design here is made thoughtfully—soft colors, calm layouts, and meaningful intention behind each pixel.</p>
+  </section>
+
+  <section id="contact" style="text-align:center;">
+    <h2 style="font-family: Playfair Display;">Let’s Create Together</h2>
+    <p style="margin:1rem 0 1.5rem;">Have a project in mind? I’d love to hear from you.</p>
+    <div class="cta">
+      <a href="mailto:your@email.com">Email Me</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Soft Pixel Studio · Made with love & purpose
+  </footer>
+
+</body>
+</html>
