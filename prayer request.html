@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prayer Wall 🙏</title>
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #f3f4ff, #ffffff);
+  padding: 20px;
+}
+
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+input, textarea, button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #9cc9f6;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 6px #9bebf0, 0 0 10px #9bebf0;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #f88be8;
+  box-shadow: 0 0 20px #9bebf0, 0 0 40px #9bebf0
+}
+
+.msg {
+  text-align: center;
+  margin-top: 10px;
+  color: green;
+}
+
+.card {
+  background: #f6f7ff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  border-left: 4px solid #6b5cff;
+  position: relative;
+}
+
+.like-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  color: red;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap; 
+  gap: 15px;
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; 
+  padding: 15px;
+  background: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  scrollbar-width: none; 
+}
+
+nav::-webkit-scrollbar {
+  display: none; 
+}
+
+nav a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background: transparent;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2.5px;
+  
+  box-shadow: 0 0 8px #7df7ff;
+  transform: translateX(-50%);
+  transition: width 0.4s ease-in-out;
+  border-radius: 4px;
+  animation: shimmer 2.5s infinite linear;
+  background-size: 200% 100%;
+}
+
+nav a:hover::after {
+  width: 80%;
+}
+nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      gap: 10px;
+      
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 8px; 
+     
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+    
+      transform: scale(1.08);
+    }
+
+</style>
+</head>
+
+<body>
+  <nav>
+<a href="index.htm">HOME</a>
+    <a href="#help">HELP CENTER</a>
+    <a href="#about">ABOUT US</a>
+    <a href="kids.html">KIDS SECTION</a>
+
+</nav>
+<video autoplay muted loop playsinline>
+  <source src="img/video2.mp4" type="video/mp4">
+</video>
+
+<h1>Submit your Prayer Requests here.</h1>
+
+<div class="container">
+  <form id="prayerForm">
+    <input type="text" id="name" placeholder="Your Name (optional)">
+    <textarea id="prayer" placeholder="Write your prayer..." required></textarea>
+
+    <label>
+      <input type="checkbox" id="anonymous"> Stay Anonymous
+    </label>
+
+    <button type="submit">Share Prayer</button>
+  </form>
+  <p class="msg" id="msg"></p>
+</div>
+
+<h1>Prayer Wall 🤍</h1>
+<div class="container" id="prayerCards"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){ emailjs.init("YOUR_PUBLIC_KEY"); })();
+
+let prayers = JSON.parse(localStorage.getItem("prayers")) || [];
+
+function save(){
+  localStorage.setItem("prayers", JSON.stringify(prayers));
+}
+
+function render(){
+  const prayerCards = document.getElementById("prayerCards");
+  prayerCards.innerHTML = "";
+
+  prayers.forEach((p, index) => {
+    prayerCards.innerHTML += `
+      <div class="card">
+        <span class="delete-btn" onclick="deletePrayer(${index})">❌</span>
+        <p>${p.text}</p>
+        <small>— ${p.name}</small>
+        <div class="like-btn" onclick="likePrayer(${index})">🙏 ${p.likes}</div>
+      </div>
+    `;
+  });
+}
+
+function likePrayer(i){
+  prayers[i].likes++;
+  save();
+  render();
+}
+
+function deletePrayer(i){
+  if(confirm("Delete this prayer?")){
+    prayers.splice(i,1);
+    save();
+    render();
+  }
+}
+
+document.getElementById("prayerForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  let name = document.getElementById("name").value || "Anonymous";
+  let text = document.getElementById("prayer").value;
+  let anon = document.getElementById("anonymous").checked;
+
+  if(!text.trim()) return;
+  if(anon) name = "Anonymous";
+
+  prayers.unshift({ name: name, text: text, likes: 0 });
+
+  save();
+  render();
+
+  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+    name: name,
+    message: text
+  });
+
+  document.getElementById("msg").innerText = "Your prayer has been added 🤍";
+  this.reset();
+});
+
+render();
+</script>
+
+</body>
+</html>
+
